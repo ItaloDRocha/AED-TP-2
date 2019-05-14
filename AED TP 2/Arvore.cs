@@ -12,7 +12,7 @@ namespace AED_TP_2
         Motorista dado = null;
         public Arvore()
         {
-            Raiz = null;
+            Pai = null;
             NodoDireito = null;
             NodoEsquerdo = null;
         }
