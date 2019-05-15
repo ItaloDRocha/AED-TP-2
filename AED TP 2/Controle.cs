@@ -13,11 +13,11 @@ namespace AED_TP_2
         {
             if(arvore.Dado == null)
             {
-                arvore.Pai.Inserir(dado);
+                arvore = new Arvore(dado);
             }
             else
             {
-                PercorrerInserir(arvore.Pai, dado);
+                PercorrerInserir(arvore, dado);
             }
         }
 
@@ -29,9 +29,9 @@ namespace AED_TP_2
             }
             else if(motorista.Cnh > nodo.Dado.Cnh)
             {
-                if(nodo.NodoDireito.Dado == null)
+                if(nodo.NodoDireito == null)
                 {
-                    nodo.NodoDireito.Dado = motorista;
+                    nodo.NodoDireito = new Arvore(motorista);
                 }
                 else
                 {
@@ -40,9 +40,9 @@ namespace AED_TP_2
             }
             else if (motorista.Cnh < nodo.Dado.Cnh)
             {
-                if (nodo.NodoEsquerdo.Dado == null)
+                if (nodo.NodoEsquerdo == null)
                 {
-                    nodo.NodoEsquerdo.Dado = motorista;
+                    nodo.NodoEsquerdo = new Arvore(motorista);
                 }
                 else
                 {
@@ -53,35 +53,46 @@ namespace AED_TP_2
 
         public Motorista buscar(int cnh)
         {
-            if(arvore.Pai.Dado.Cnh == cnh)
+            if(arvore.Dado.Cnh == cnh)
             {
-                return arvore.Pai.Dado;
+                return arvore.Dado;
             }
             else
             {
-               return PercorrerBuscar(cnh, arvore.Pai); //if return == null fala q não achou, caso contrario procurado == return desse metodo.
+ 
+                return PercorrerBuscar(cnh, arvore); //if return == null fala q não achou, caso contrario procurado == return desse metodo.
             }
+            
         }
 
         public Motorista PercorrerBuscar(int cnh, Arvore nodo)
         {
-            if(cnh > nodo.Dado.Cnh)
+
+            if (cnh > nodo.Dado.Cnh)
             {
-                if (nodo.NodoDireito.Dado == null)
+                Console.WriteLine("entrou 1");
+                Console.ReadKey();
+                if (nodo.NodoDireito == null)
                 {
+                    Console.WriteLine("nao pode entrar 1");
+                    Console.ReadKey();
                     return null;
                 }
                 else if (nodo.NodoDireito.Dado.Cnh == cnh)
                 {
+                    Console.WriteLine("entrou mizeravi");
+                    Console.ReadKey();
                     return nodo.NodoDireito.Dado;
                 }
-                else PercorrerBuscar(cnh, nodo.NodoDireito);
+                else return PercorrerBuscar(cnh, nodo.NodoDireito);
             }
             else
             {
                 if(cnh < nodo.Dado.Cnh)
                 {
-                    if (nodo.NodoEsquerdo.Dado == null)
+                    Console.WriteLine("nao pode entrar 2 ");
+                    Console.ReadKey();
+                    if (nodo.NodoEsquerdo == null)
                     {
                         return null;
                     }
@@ -89,9 +100,11 @@ namespace AED_TP_2
                     {
                         return nodo.NodoEsquerdo.Dado;
                     }
-                    else PercorrerBuscar(cnh, nodo.NodoEsquerdo);
+                    else return PercorrerBuscar(cnh, nodo.NodoEsquerdo);
                 }
             }
+            Console.WriteLine("nao pode entrar3");
+            Console.ReadKey();
             return null;
         }
         
