@@ -59,7 +59,6 @@ namespace AED_TP_2
             }
             else
             {
- 
                 return PercorrerBuscar(cnh, arvore); //if return == null fala q não achou, caso contrario procurado == return desse metodo.
             }
             
@@ -70,18 +69,12 @@ namespace AED_TP_2
 
             if (cnh > nodo.Dado.Cnh)
             {
-                Console.WriteLine("entrou 1");
-                Console.ReadKey();
                 if (nodo.NodoDireito == null)
                 {
-                    Console.WriteLine("nao pode entrar 1");
-                    Console.ReadKey();
                     return null;
                 }
                 else if (nodo.NodoDireito.Dado.Cnh == cnh)
                 {
-                    Console.WriteLine("entrou mizeravi");
-                    Console.ReadKey();
                     return nodo.NodoDireito.Dado;
                 }
                 else return PercorrerBuscar(cnh, nodo.NodoDireito);
@@ -90,8 +83,6 @@ namespace AED_TP_2
             {
                 if(cnh < nodo.Dado.Cnh)
                 {
-                    Console.WriteLine("nao pode entrar 2 ");
-                    Console.ReadKey();
                     if (nodo.NodoEsquerdo == null)
                     {
                         return null;
@@ -103,8 +94,6 @@ namespace AED_TP_2
                     else return PercorrerBuscar(cnh, nodo.NodoEsquerdo);
                 }
             }
-            Console.WriteLine("nao pode entrar3");
-            Console.ReadKey();
             return null;
         }
         
